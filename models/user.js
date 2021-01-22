@@ -36,5 +36,18 @@ module.exports = (sequelize) => {
         }
       }
     },
+
+    emailAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'email address is required'
+        },
+        isEmail: {
+          msg: 'Please provide a valid email address'
+        }
+      }
+    },
   })
 }
