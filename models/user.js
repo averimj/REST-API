@@ -66,7 +66,7 @@ module.exports = (sequelize) => {
         }
       }
     },
-    
+
     confirmedPassword: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -82,5 +82,18 @@ module.exports = (sequelize) => {
         }
       }
     }
-  })
-}
+  }, { sequelize });
+
+  User.associate = (models) => {
+
+    User.hasMany(models.Course, {
+      as: 'student',
+      foreignKey: {
+        fieldName: 'studentUserId',
+        allowNull: false
+      }
+    })
+  }
+
+  return User;
+};
