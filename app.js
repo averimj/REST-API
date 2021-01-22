@@ -39,6 +39,16 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Test the database connection.
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+})();
+
 // set our port
 app.set('port', process.env.PORT || 5000);
 
