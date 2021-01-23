@@ -22,3 +22,16 @@ module.exports = (sequelize) => {
         }
       }
     },
+
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Course description is required'
+        },
+        notEmpty: {
+          msg: 'Please provide a course description'
+        }
+      }
+    },
