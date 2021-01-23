@@ -35,3 +35,16 @@ module.exports = (sequelize) => {
         }
       }
     },
+
+    estimatedTime: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Estimated time is required'
+        },
+        notEmpty: {
+          msg: 'Please provide an estimated course time'
+        }
+      }
+    },
