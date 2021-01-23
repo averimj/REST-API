@@ -48,3 +48,16 @@ module.exports = (sequelize) => {
         }
       }
     },
+
+    materialsNeeded: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'A list of materials are required'
+        },
+        notEmpty: {
+          msg: 'Please provide a list of materials'
+        }
+      }
+    },
