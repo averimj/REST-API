@@ -8,4 +8,17 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    }
+    },
+
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Title is required'
+        },
+        notEmpty: {
+          msg: 'Please provide a title'
+        }
+      }
+    },
