@@ -40,6 +40,9 @@ module.exports = (sequelize) => {
     emailAddress: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {
+        msg: 'The email you entered already exist'
+      },
       validate: {
         notNull: {
           msg: 'email address is required'
@@ -66,7 +69,7 @@ module.exports = (sequelize) => {
         }
       }
     },
-    
+
     confirmedPassword: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -82,5 +85,17 @@ module.exports = (sequelize) => {
         }
       }
     }
-  })
-}
+  }, { sequelize });
+
+  User.associate = (models) => {
+    User.hasMany(models.Course, {
+      as: 'student',
+      foreignKey: {
+        fieldName: 'studentUserId',
+        allowNull: false
+      }
+    })
+  }
+
+  return User;
+};
