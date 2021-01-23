@@ -61,3 +61,17 @@ module.exports = (sequelize) => {
         }
       }
     },
+
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'UserId is required'
+        },
+        notEmpty: {
+          msg: 'Please provide a userId'
+        }
+      }
+    }
+  }, { sequelize });
